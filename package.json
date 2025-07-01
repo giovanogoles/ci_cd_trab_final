@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "trabalho.js",
   "scripts": {
-    "test": "mocha --require ./prog-trabalho-final/testes/test-helper.js 'prog-trabalho-final/testes/**/*.js'",
+    "test": "mocha --require ./prog-trabalho-final/testes/test-helper.js --no-experimental-modules 'prog-trabalho-final/testes/**/*.js'",
     "e2e": "playwright test"
   },
   "keywords": [],
