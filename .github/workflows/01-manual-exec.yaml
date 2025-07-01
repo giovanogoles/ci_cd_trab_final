@@ -1,0 +1,36 @@
+# CI de Nível 01 - Disparo Manual a partir de 1 Click
+
+name: 'Execução Manual'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Instalando Yarn globalmente
+        run: npm install -g yarn
+
+      - name: Instalando dependências
+        working-directory: prog-trabalho-final/testes
+        run: yarn install
+
+      - name: Instalando Playwright
+        working-directory: prog-trabalho-final/testes
+        run: yarn playwright install
+
+      - name: Executando Testes E2E
+        working-directory: prog-trabalho-final/testes
+        run: yarn run e2e
