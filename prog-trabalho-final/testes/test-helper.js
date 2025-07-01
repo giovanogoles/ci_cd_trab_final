@@ -1,15 +1,17 @@
+const { before, after, beforeEach, afterEach } = require('mocha');  // Importando explicitamente as funções do Mocha
 const { chromium } = require('playwright');
 
-// Essas funções são carregadas globalmente pelo Mocha
+let browser;
+
 before(async () => {
-  global.browser = await chromium.launch({ headless: true });
+  browser = await chromium.launch({ headless: true });
 });
 
 after(async () => {
-  await global.browser.close();
+  await browser.close();
 });
 
 // Função global para criar uma nova página
 global.page = async () => {
-  return await global.browser.newPage();
+  return await browser.newPage();
 };
