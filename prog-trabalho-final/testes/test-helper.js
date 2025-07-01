@@ -1,4 +1,7 @@
-const { before, after, beforeEach, afterEach } = require('mocha');  // Importando explicitamente as funções do Mocha
+// test-helper.js
+
+// Requerendo o Mocha e garantindo que as funções estejam disponíveis
+require('mocha');
 const { chromium } = require('playwright');
 
 let browser;
