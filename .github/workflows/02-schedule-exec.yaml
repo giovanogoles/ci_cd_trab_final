@@ -1,9 +1,10 @@
-# CI de Nível 01 - Disparo Manual a partir de 1 Click
+# CI de Nível 02 - Disparo Agendada
 
-name: 'Execução Manual'
+name: 'Execução Agendada'
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'
 
 jobs:
   e2e-tests:
@@ -35,7 +36,7 @@ jobs:
         working-directory: prog-trabalho-final/testes
         run: yarn run e2e
 
-      - name: Relatório Testes
+      - name: Upload test reports as artifacts
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
