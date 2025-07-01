@@ -34,3 +34,9 @@ jobs:
       - name: Executando Testes E2E
         working-directory: prog-trabalho-final/testes
         run: yarn run e2e
+
+      - name: Upload test reports as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: ./playwright-report/html
